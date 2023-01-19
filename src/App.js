@@ -23,12 +23,12 @@ const questions = [
   },
 ];
 
-function Result() {
+function Result({correct, max, onReset}) {
   return (
     <div className="result">
       <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-      <h2>Вы отгадали 3 ответа из 10</h2>
-      <button>Попробовать снова</button>
+      <h2>Вы отгадали {correct} ответа из {max}</h2>
+      <button onClick={()=>{onReset()}}>Попробовать снова</button>
     </div>
   );
 }
@@ -59,6 +59,16 @@ function App() {
   const onClickVariant = (index) => {
     console.log(step, index);
     setStep(step + 1);
+    if (index == question.correct) {
+      setCorrect(correct + 1)
+    } else {
+      setCorrect(correct)
+    }
+  }
+
+  const resetGame = () => {
+    setStep(0);
+    setCorrect(0);
   }
 
   return (
@@ -67,7 +77,7 @@ function App() {
         (step !== questions.length) ? (
           <Game step={step} question={question} onClickVariant={onClickVariant}/>
         ) : (
-          <Result />
+          <Result correct={correct} max={questions.length} onReset={resetGame}/>
         )
       }
       
