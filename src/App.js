@@ -1,3 +1,4 @@
+import React from 'react';
 import './index.scss';
 
 const questions = [
@@ -32,27 +33,45 @@ function Result() {
   );
 }
 
-function Game() {
+function Game({ step, question, onClickVariant }) {
+  const percentage = Math.round((step / questions.length) * 100);
+
   return (
     <>
       <div className="progress">
-        <div style={{ width: '50%' }} className="progress__inner"></div>
+        <div style={{ width: `${percentage}%` }} className="progress__inner"></div>
       </div>
-      <h1>Что такое useState?</h1>
+      <h1>{question.title}</h1>
       <ul>
-        <li>Это функция для хранения данных компонента</li>
-        <li>Это глобальный стейт</li>
-        <li>Это когда на ты никому не нужен</li>
+        {
+          question.variants.map((txt, i) => <li key={txt+i} onClick={()=>{onClickVariant(i)}}>{txt}</li>)
+        }
       </ul>
     </>
   );
 }
 
 function App() {
+  const [step, setStep] = React.useState(0);
+  const [correct, setCorrect] = React.useState(0);
+  const question = questions[step];
+
+  const onClickVariant = (index) => {
+    console.log(step, index);
+    setStep(step + 1);
+  }
+
   return (
     <div className="App">
-      <Game />
-      {/* <Result /> */}
+      {
+        (step !== questions.length) ? (
+          <Game step={step} question={question} onClickVariant={onClickVariant}/>
+        ) : (
+          <Result />
+        )
+      }
+      
+      
     </div>
   );
 }
