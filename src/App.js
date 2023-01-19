@@ -4,12 +4,20 @@ import './index.scss';
 const questions = [
   {
     title: 'React - это ... ?',
-    variants: ['библиотека', 'фреймворк', 'приложение'],
+    variants: [
+      'библиотека', 
+      'фреймворк', 
+      'приложение'
+    ],
     correct: 0,
   },
   {
     title: 'Компонент - это ... ',
-    variants: ['приложение', 'часть приложения или страницы', 'то, что я не знаю что такое'],
+    variants: [
+      'приложение', 
+      'часть приложения или страницы', 
+      'то, что я не знаю что такое'
+    ],
     correct: 1,
   },
   {
@@ -17,17 +25,18 @@ const questions = [
     variants: [
       'Это простой HTML',
       'Это функция',
+      'Это фреймворк',
       'Это тот же HTML, но с возможностью выполнять JS-код',
     ],
-    correct: 2,
+    correct: 3,
   },
 ];
 
-function Result({correct, max, onReset}) {
+function Result({correct, onReset}) {
   return (
     <div className="result">
       <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-      <h2>Вы отгадали {correct} ответа из {max}</h2>
+      <h2>Вы отгадали {correct} ответа из {questions.length}</h2>
       <button onClick={()=>{onReset()}}>Попробовать снова</button>
     </div>
   );
@@ -54,15 +63,12 @@ function Game({ step, question, onClickVariant }) {
 function App() {
   const [step, setStep] = React.useState(0);
   const [correct, setCorrect] = React.useState(0);
-  const question = questions[step];
+  const question = questions[step]; // текущий вопрос
 
   const onClickVariant = (index) => {
-    console.log(step, index);
     setStep(step + 1);
     if (index == question.correct) {
       setCorrect(correct + 1)
-    } else {
-      setCorrect(correct)
     }
   }
 
@@ -77,11 +83,9 @@ function App() {
         (step !== questions.length) ? (
           <Game step={step} question={question} onClickVariant={onClickVariant}/>
         ) : (
-          <Result correct={correct} max={questions.length} onReset={resetGame}/>
+          <Result correct={correct} onReset={resetGame}/>
         )
       }
-      
-      
     </div>
   );
 }
