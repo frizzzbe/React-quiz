@@ -2,21 +2,28 @@ import React from 'react'
 import tests from '../assets/tests'
 import congrats from '../assets/images/congrats.png'
 import { useDispatch } from 'react-redux'
-import { setTestId } from '../redux/slices/questionsSlice';
+import { setRightAnswers } from '../redux/slices/questionsSlice';
+import { useSelector } from 'react-redux';
+import useWhyDidYouUpdate from 'ahooks/lib/useWhyDidYouUpdate';
 
-function Result({correct, testId, onReset}) {
+const Result = (({correct, onReset}) => {
+  // useWhyDidYouUpdate('Result', [correct, onReset]);
+  const testId = useSelector((state) => state.questions.testId)
   const dispatch = useDispatch();
-  const currentTest = tests.find(el => (el.id === testId))
+  const countOfQuestions = tests.find(el => (el.id === testId)).questions.length
+
+  React.useEffect(()=>{
+    console.log('render answer')
+    dispatch(setRightAnswers({testId, correct, countOfQuestions}))
+  }, [])
+
   return (
     <div className="result">
       <img src={congrats} alt="Congratulations"/>
-      <h2>Вы отгадали {correct} ответа из {currentTest.questions.length}</h2>
-      <button onClick={()=>{
-        onReset();
-        dispatch(setTestId(-1));
-      }}>Назад к тестам</button>
+      <h2>Вы отгадали {correct} ответа из {countOfQuestions}</h2>
+      <button onClick={()=>onReset()}>Назад к тестам</button>
     </div>
   );
-}
+});
 
 export default Result

@@ -1,7 +1,10 @@
 import React from 'react'
 import tests from '../assets/tests'
+import { useSelector } from 'react-redux';
 
-function Game({ testId, step, question, onClickVariant }) {
+
+function Game({ step, question, onClickVariant }) {
+  const testId = useSelector((state) => state.questions.testId)
   const currentTest = tests.find(el => (el.id === testId))
   const percentage = Math.round((step / currentTest.questions.length) * 100);
 
