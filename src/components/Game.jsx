@@ -1,5 +1,5 @@
 import React from 'react'
-import questions from './assets/questions'
+import questions from '../assets/questions'
 
 function Game({ step, question, onClickVariant }) {
   const percentage = Math.round((step / questions.length) * 100);

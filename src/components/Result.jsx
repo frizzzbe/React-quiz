@@ -1,5 +1,5 @@
 import React from 'react'
-import questions from './assets/questions'
+import questions from '../assets/questions'
 
 function Result({correct, onReset}) {
   return (
