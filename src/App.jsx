@@ -3,7 +3,7 @@ import tests from './assets/tests'
 import Result from './components/Result'
 import Game from './components/Game'
 import { useSelector } from 'react-redux';
-import Menu from './components/Menu.jsx';
+import Menu from './components/Menu';
 
 function App() {
   const [step, setStep] = React.useState(0);
