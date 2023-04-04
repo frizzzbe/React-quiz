@@ -1,41 +1,11 @@
 import React from 'react';
 import './index.scss';
-
-const questions = [
-  {
-    title: 'React - это ... ?',
-    variants: [
-      'библиотека', 
-      'фреймворк', 
-      'приложение'
-    ],
-    correct: 0,
-  },
-  {
-    title: 'Компонент - это ... ',
-    variants: [
-      'приложение', 
-      'часть приложения или страницы', 
-      'то, что я не знаю что такое'
-    ],
-    correct: 1,
-  },
-  {
-    title: 'Что такое JSX?',
-    variants: [
-      'Это простой HTML',
-      'Это функция',
-      'Это фреймворк',
-      'Это тот же HTML, но с возможностью выполнять JS-код',
-    ],
-    correct: 3,
-  },
-];
+import questions from './assets/questions'
 
 function Result({correct, onReset}) {
   return (
     <div className="result">
-      <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
+      <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="icon flat"/>
       <h2>Вы отгадали {correct} ответа из {questions.length}</h2>
       <button onClick={()=>{onReset()}}>Попробовать снова</button>
     </div>
