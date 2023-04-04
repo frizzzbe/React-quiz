@@ -1,8 +1,9 @@
 import React from 'react'
-import questions from '../assets/questions'
+import tests from '../assets/tests'
 
-function Game({ step, question, onClickVariant }) {
-  const percentage = Math.round((step / questions.length) * 100);
+function Game({ testId, step, question, onClickVariant }) {
+  const currentTest = tests.find(el => (el.id === testId))
+  const percentage = Math.round((step / currentTest.questions.length) * 100);
 
   return (
     <>

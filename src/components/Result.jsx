@@ -1,11 +1,13 @@
 import React from 'react'
-import questions from '../assets/questions'
+import tests from '../assets/tests'
+import congrats from '../assets/images/congrats.png'
 
-function Result({correct, onReset}) {
+function Result({correct, testId, onReset}) {
+  const currentTest = tests.find(el => (el.id === testId))
   return (
     <div className="result">
-      <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="icon flat"/>
-      <h2>Вы отгадали {correct} ответа из {questions.length}</h2>
+      <img src={congrats} alt="Congratulations"/>
+      <h2>Вы отгадали {correct} ответа из {currentTest.questions.length}</h2>
       <button onClick={()=>{onReset()}}>Попробовать снова</button>
     </div>
   );
