@@ -1,34 +1,8 @@
 import React from 'react';
 import './index.scss';
 import questions from './assets/questions'
-
-function Result({correct, onReset}) {
-  return (
-    <div className="result">
-      <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="icon flat"/>
-      <h2>Вы отгадали {correct} ответа из {questions.length}</h2>
-      <button onClick={()=>{onReset()}}>Попробовать снова</button>
-    </div>
-  );
-}
-
-function Game({ step, question, onClickVariant }) {
-  const percentage = Math.round((step / questions.length) * 100);
-
-  return (
-    <>
-      <div className="progress">
-        <div style={{ width: `${percentage}%` }} className="progress__inner"></div>
-      </div>
-      <h1>{question.title}</h1>
-      <ul>
-        {
-          question.variants.map((txt, i) => <li key={txt+i} onClick={()=>{onClickVariant(i)}}>{txt}</li>)
-        }
-      </ul>
-    </>
-  );
-}
+import Result from './components/Result'
+import Game from './components/Game'
 
 function App() {
   const [step, setStep] = React.useState(0);
@@ -37,7 +11,7 @@ function App() {
 
   const onClickVariant = (index) => {
     setStep(step + 1);
-    if (index == question.correct) {
+    if (index === question.correct) {
       setCorrect(correct + 1)
     }
   }
