@@ -19,11 +19,11 @@ function App() {
   const currentTest = tests.find(el => (el.id === testId))
   if (currentTest === undefined) {
     return (<div className="App">
-      <Menu/>
-    </div>)
-  } 
-  const question = currentTest.questions[step]; // текущий вопрос
+              <Menu/>
+            </div>)
+  }
 
+  const question = currentTest.questions[step]; // текущий вопрос
   const onClickVariant = (index) => {
     setStep(step + 1);
     if (index === question.correct) {

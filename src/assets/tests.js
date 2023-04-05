@@ -1,4 +1,4 @@
-export const tests = [
+const tests = [
   {
     id: 0,
     title: "Тест на знание Frontend",
