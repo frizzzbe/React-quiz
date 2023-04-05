@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap");
+
+* {  
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
 body {
   margin: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #6a5be2;
@@ -10,11 +15,17 @@ body {
   justify-content: center;
   min-height: 100vh;
   position: relative;
-  // padding: 40px 0 55px;
+  padding: 10px 0 40px;
+}
+
+#root {
+  max-width: 600px;
+  flex-basis: 90%;
 }
 
 .App {
-  width: 500px;
+  box-sizing: border-box;
+  width: 100%;
   border-radius: 30px;
   padding: 40px;
   background-color: #fff;
@@ -27,7 +38,7 @@ body {
 
     button {
       font-weight: bold;
-      font-family: 'Nunito', sans-serif;
+      font-family: "Nunito", sans-serif;
       border-radius: 30px;
       border: 0;
       padding: 15px 30px;
@@ -59,13 +70,17 @@ body {
       width: 80%;
       background: rgb(18, 231, 48);
       transition: all 0.3s ease-in-out;
-      background: linear-gradient(90deg, rgba(18, 231, 48, 1) 0%, rgba(0, 212, 255, 1) 100%);
+      background: linear-gradient(
+        90deg,
+        rgba(18, 231, 48, 1) 0%,
+        rgba(0, 212, 255, 1) 100%
+      );
     }
   }
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     display: block;
     height: 50px;
     border-bottom-left-radius: 30px;
@@ -111,14 +126,52 @@ body {
       }
     }
 
+    .menu-title {
+      padding-right: 24px;
+    }
+
     .score-info {
       position: absolute;
       right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 15px;
       font-size: 16px;
       font-weight: 600;
-      color: rgba(0,0,0, 0.4);
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  #root {
+    flex-basis: 95%;
+  }
+
+  .App {
+    padding: 30px 20px 25px;
+
+    .result {
+      padding-bottom: 15px;
+      img {
+        width: 115px;
+      }
+    }
+
+    .main-title {
+      font-size: 1.6em;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.4em;
+      line-height: 1.2;
+    }
+
+    ul li {
+      font-size: 14px;
     }
   }
 }

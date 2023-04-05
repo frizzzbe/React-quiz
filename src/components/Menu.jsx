@@ -12,7 +12,7 @@ function Menu() {
 
   return (
     <div>
-      <h1>Выберите тест 💡</h1>
+      <h1 className="main-title">Выберите тест 💡</h1>
       <ul className="main-menu">
         {tests.map((el) => {
           let findAnswer = rightAnswers.find(obj => obj.testId === el.id);
@@ -22,7 +22,7 @@ function Menu() {
               onClick={() => selectTest(el.id)}
               className="menu-item"
             >
-              {el.title} {findAnswer ? <div className="score-info">{findAnswer.correct + '/' + findAnswer.countOfQuestions}</div> : ''}
+              <div className="menu-title">{el.title}</div> {findAnswer ? <div className="score-info">{findAnswer.correct + '/' + findAnswer.countOfQuestions}</div> : ''}
             </li>
           );
         })}
