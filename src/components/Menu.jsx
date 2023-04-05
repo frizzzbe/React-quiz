@@ -14,7 +14,7 @@ function Menu() {
       <h1>Выберите тест 💡</h1>
       <ul className="main-menu">
         {
-          tests.map(el => <li key={el.id} onClick={()=>selectTest(el.id)} className="menu-item">{el.title}</li>)
+          tests.map(el => <li key={el.id} onClick={()=>selectTest(el.id)} className="menu-item">{el.title} <div className="score-info">7/10</div></li>)
         }
       </ul>
     </div>

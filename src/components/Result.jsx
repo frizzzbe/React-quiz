@@ -19,7 +19,7 @@ const Result = (({correct, onReset}) => {
   return (
     <div className="result">
       <img src={congrats} alt="Congratulations"/>
-      <h2>Вы отгадали {correct} ответа из {countOfQuestions}</h2>
+      <h2>Вы ответили {correct} из {countOfQuestions}</h2>
       <button onClick={()=>onReset()}>Назад к тестам</button>
     </div>
   );
