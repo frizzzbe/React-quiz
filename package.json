@@ -2,6 +2,7 @@
   "name": "counter",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://frizzzbe.ru/React-quiz",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.4",
