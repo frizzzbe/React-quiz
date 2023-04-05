@@ -4,10 +4,9 @@ import congrats from '../assets/images/congrats.png'
 import { useDispatch } from 'react-redux'
 import { setRightAnswers } from '../redux/slices/questionsSlice';
 import { useSelector } from 'react-redux';
-import useWhyDidYouUpdate from 'ahooks/lib/useWhyDidYouUpdate';
+// import useWhyDidYouUpdate from 'ahooks/lib/useWhyDidYouUpdate';
 
 const Result = (({correct, onReset}) => {
-  // useWhyDidYouUpdate('Result', [correct, onReset]);
   const testId = useSelector((state) => state.questions.testId)
   const dispatch = useDispatch();
   const countOfQuestions = tests.find(el => (el.id === testId)).questions.length
