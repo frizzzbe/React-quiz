@@ -12,7 +12,6 @@ const Result = (({correct, onReset}) => {
   const countOfQuestions = tests.find(el => (el.id === testId)).questions.length
 
   React.useEffect(()=>{
-    console.log('render answer')
     dispatch(setRightAnswers({testId, correct, countOfQuestions}))
   }, [])
 
